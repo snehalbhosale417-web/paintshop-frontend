@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Panel</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- FIXED CSS PATH -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -38,7 +40,8 @@
   </div>
 
   <script>
-    const API_URL = "http://localhost:3000/api/products";
+    // 🔥 IMPORTANT: CHANGE THIS AFTER DEPLOYMENT
+    const API_URL = "https://paintshop-snehal.onrender.com/api/products";
 
     // ➕ Add product
     function addProduct() {
@@ -60,6 +63,10 @@
       .then(res => res.json())
       .then(() => {
         alert("Product Added ✅");
+      })
+      .catch(err => {
+        alert("Error adding product ❌");
+        console.log(err);
       });
     }
 
@@ -72,6 +79,10 @@
       })
       .then(() => {
         alert("Product Deleted ❌");
+      })
+      .catch(err => {
+        alert("Error deleting product ❌");
+        console.log(err);
       });
     }
   </script>
