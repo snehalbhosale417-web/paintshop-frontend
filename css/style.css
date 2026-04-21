@@ -1,6 +1,12 @@
 /* =========================
-   GLOBAL
+   GLOBAL RESET
 ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -8,6 +14,7 @@ body {
   background: url("../images/shop.jpeg") no-repeat center center/cover;
   background-attachment: fixed;
   color: white;
+  overflow-x: hidden;
 }
 
 /* DARK OVERLAY */
@@ -15,7 +22,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
   z-index: -1;
 }
 
@@ -96,7 +103,7 @@ nav a:hover {
 }
 
 /* =========================
-   FEATURES GRID
+   FEATURES
 ========================= */
 
 .features {
@@ -129,16 +136,17 @@ nav a:hover {
 }
 
 /* =========================
-   PRODUCT / CART SCROLL
+   PRODUCT / CART / ORDERS
 ========================= */
 
 #product-list,
 #cart-items,
 #order-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 15px;
   padding: 15px;
-  overflow-x: auto;
 }
 
 /* =========================
@@ -173,10 +181,9 @@ button:hover {
 }
 
 .checkout input {
-  width: 95%;
+  width: 100%;
   padding: 10px;
-  margin: 8px auto;
-  display: block;
+  margin: 8px 0;
   border-radius: 8px;
   border: none;
 }
@@ -194,6 +201,7 @@ button:hover {
   text-decoration: none;
   font-size: 18px;
   transition: 0.3s;
+  z-index: 999;
 }
 
 .call { left: 15px; background: blue; }
@@ -205,7 +213,7 @@ button:hover {
 }
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
 
 @keyframes fadeUp {
@@ -226,25 +234,25 @@ button:hover {
 
   nav a {
     display: inline-block;
-    margin: 8px;
+    margin: 6px;
   }
 
   .hero-box {
     padding: 20px;
   }
 
-  .card {
-    min-width: 180px;
+  .features {
+    grid-template-columns: 1fr;
   }
 
   #product-list,
   #cart-items,
   #order-list {
     flex-direction: column;
-    overflow-x: hidden;
+    align-items: center;
   }
 
-  .checkout input {
-    width: 100%;
+  .card {
+    width: 90%;
   }
 }
