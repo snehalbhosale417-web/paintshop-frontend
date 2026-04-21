@@ -1,12 +1,13 @@
-const cartContainer = document.getElementById("cart-items");
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
 function loadCart() {
+  const cartContainer = document.getElementById("cart-items");
+  if (!cartContainer) return;
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
   cartContainer.innerHTML = "";
 
-  if (!cart.length) {
-    cartContainer.innerHTML = "<h2>Cart is empty</h2>";
+  if (cart.length === 0) {
+    cartContainer.innerHTML = "<h2>Cart is empty 🛒</h2>";
     return;
   }
 
@@ -21,7 +22,7 @@ function loadCart() {
     div.innerHTML = `
       <h3>${item.name}</h3>
       <p>₹${item.price}</p>
-      <button onclick="removeItem(${index})">Remove</button>
+      <button onclick="removeItem(${index})">Remove ❌</button>
     `;
 
     cartContainer.appendChild(div);
@@ -29,12 +30,17 @@ function loadCart() {
 
   const totalDiv = document.createElement("h2");
   totalDiv.innerText = "Total: ₹" + total;
+
   cartContainer.appendChild(totalDiv);
 }
 
 function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
   cart.splice(index, 1);
+
   localStorage.setItem("cart", JSON.stringify(cart));
+
   loadCart();
 }
 
