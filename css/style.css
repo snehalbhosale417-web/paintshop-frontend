@@ -1,18 +1,21 @@
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url("../images/shop.jpeg") no-repeat center center/cover;
+
+  /* FIXED BACKGROUND IMAGE PATH */
+  background: url("./images/shop.jpeg") no-repeat center center/cover;
+
   color: white;
 }
 
+/* DARK OVERLAY */
 body::before {
   content: "";
   position: fixed;
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    rgba(0,0,0,0.25),   
+    rgba(0,0,0,0.25),
     rgba(0,0,0,0.35)
   );
   top: 0;
@@ -20,7 +23,7 @@ body::before {
   z-index: -1;
 }
 
-
+/* NAVBAR */
 nav {
   display: flex;
   justify-content: space-between;
@@ -45,7 +48,7 @@ nav a:hover {
   color: #00ffd5;
 }
 
-
+/* HERO SECTION */
 .hero {
   display: flex;
   justify-content: center;
@@ -63,7 +66,7 @@ nav a:hover {
   animation: fadeIn 1.2s ease-in-out;
 }
 
-
+/* BUTTON */
 .btn {
   background: linear-gradient(45deg, #00ffd5, #00ff88);
   padding: 12px 25px;
@@ -78,16 +81,7 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-
-.section-title {
-  text-align: center;
-  font-size: 30px;
-  margin: 40px 0 10px;
-  color: #00ffd5;
-  animation: fadeUp 1s ease;
-}
-
-
+/* FEATURES */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -98,10 +92,10 @@ nav a:hover {
   border-radius: 20px;
 }
 
+/* CARD */
 .card {
   min-width: 260px;
   max-width: 260px;
-  flex-shrink: 0;
 
   background: rgba(255,255,255,0.08);
   padding: 20px;
@@ -113,12 +107,12 @@ nav a:hover {
   animation: fadeUp 0.8s ease;
 }
 
-
 .card:hover {
   transform: translateY(-12px) scale(1.05);
   box-shadow: 0 0 30px rgba(0,255,200,0.7);
 }
 
+/* PRODUCT IMAGE */
 .card img {
   width: 100%;
   height: 180px;
@@ -126,7 +120,7 @@ nav a:hover {
   object-fit: cover;
 }
 
-
+/* BUTTON */
 button {
   padding: 8px 12px;
   margin-top: 10px;
@@ -142,6 +136,7 @@ button:hover {
   transform: scale(1.08);
 }
 
+/* SCROLL CONTAINERS */
 #product-list,
 #cart-items,
 #order-list {
@@ -151,7 +146,7 @@ button:hover {
   overflow-x: auto;
 }
 
-
+/* CHECKOUT */
 .checkout {
   margin: 20px;
   padding: 20px;
@@ -159,7 +154,6 @@ button:hover {
   border-radius: 20px;
   backdrop-filter: blur(15px);
 }
-
 
 .checkout input {
   width: 90%;
@@ -170,16 +164,17 @@ button:hover {
   border: none;
 }
 
+/* TEXT COLOR */
 .card p b {
   color: #00ffd5;
 }
 
-
+/* STATUS COLORS */
 .status-pending { color: orange; }
 .status-shipped { color: yellow; }
 .status-delivered { color: limegreen; }
 
-
+/* FLOATING BUTTONS */
 .call, .whatsapp, .location {
   position: fixed;
   bottom: 20px;
@@ -199,7 +194,7 @@ button:hover {
   transform: scale(1.2);
 }
 
-
+/* ANIMATIONS */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -216,7 +211,7 @@ button:hover {
   to { opacity: 1; }
 }
 
-
+/* SCROLLBAR HIDE */
 #product-list::-webkit-scrollbar,
 #cart-items::-webkit-scrollbar,
 #order-list::-webkit-scrollbar {
