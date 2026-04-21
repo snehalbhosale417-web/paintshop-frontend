@@ -16,6 +16,17 @@ async function loadProducts() {
   }
 }
 
+// IMAGE FIX FUNCTION (BEST PRACTICE)
+function getImagePath(image) {
+  if (!image) return "./images/default.jpg";
+
+  if (image.startsWith("http")) return image;
+
+  if (image.startsWith("images/")) return "./" + image;
+
+  return "./images/" + image;
+}
+
 // DISPLAY PRODUCTS
 function displayProducts(products) {
   const container = document.getElementById("product-list");
@@ -31,25 +42,14 @@ function displayProducts(products) {
 
   products.forEach(p => {
 
-    // ✅ FIXED IMAGE HANDLING (VERY IMPORTANT)
-    let imgSrc = "./images/default.jpg";
-
-    if (p.image) {
-      if (p.image.startsWith("http")) {
-        imgSrc = p.image;
-      } else if (p.image.startsWith("images/")) {
-        imgSrc = "./" + p.image;
-      } else {
-        imgSrc = "./images/" + p.image;
-      }
-    }
+    const imgSrc = getImagePath(p.image);
 
     const div = document.createElement("div");
     div.className = "card";
 
     div.innerHTML = `
       <img src="${imgSrc}" 
-           style="width:100%; border-radius:10px; height:180px; object-fit:cover;">
+        style="width:100%; border-radius:10px; height:180px; object-fit:cover;">
 
       <h3>${p.name}</h3>
       <p><b>₹${p.price}</b></p>
@@ -63,7 +63,7 @@ function displayProducts(products) {
   });
 }
 
-// SEARCH FUNCTION
+// SEARCH
 const searchInput = document.getElementById("search");
 
 if (searchInput) {
@@ -90,5 +90,5 @@ function addToCart(name, price) {
   alert("Added to cart 🛒");
 }
 
-// INITIAL LOAD
+// INIT
 loadProducts();
