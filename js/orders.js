@@ -1,7 +1,6 @@
-const API_URL = "http://localhost:3000/api/orders";
+const API_URL = "https://paintshop-snehal.onrender.com/api/orders";
 
 const container = document.getElementById("order-list");
-
 
 async function loadOrders() {
   try {
@@ -10,8 +9,8 @@ async function loadOrders() {
 
     container.innerHTML = "";
 
-    if (data.length === 0) {
-      container.innerHTML = "<h3 style='text-align:center;'>No orders found</h3>";
+    if (!data.length) {
+      container.innerHTML = "<h3>No orders</h3>";
       return;
     }
 
@@ -19,27 +18,24 @@ async function loadOrders() {
       const div = document.createElement("div");
       div.className = "card";
 
-      let itemsHTML = "";
+      let items = "";
 
-      order.items.forEach(item => {
-        itemsHTML += `<p>${item.name} - ₹${item.price}</p>`;
+      order.items.forEach(i => {
+        items += `<p>${i.name} - ₹${i.price}</p>`;
       });
 
       div.innerHTML = `
-        <h3>📦 Order</h3>
-        ${itemsHTML}
-        <hr>
+        <h3>Order</h3>
+        ${items}
         <p><b>Total: ₹${order.total}</b></p>
-        <p style="font-size:12px;">${new Date(order.createdAt).toLocaleString()}</p>
       `;
 
       container.appendChild(div);
     });
 
   } catch (err) {
-    console.log("Error loading orders:", err);
+    console.log(err);
   }
 }
-
 
 loadOrders();
