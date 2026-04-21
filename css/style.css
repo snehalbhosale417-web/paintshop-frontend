@@ -1,6 +1,7 @@
 /* =========================
    GLOBAL
 ========================= */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -13,35 +14,35 @@ body {
 body::before {
   content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(0,0,0,0.25),
-    rgba(0,0,0,0.35)
-  );
-  top: 0;
-  left: 0;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
   z-index: -1;
 }
 
 /* =========================
    NAVBAR
 ========================= */
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 15px 20px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
+  flex-wrap: wrap;
+}
+
+nav h1 {
+  font-size: 18px;
 }
 
 nav a {
   color: white;
-  margin-left: 15px;
+  margin-left: 12px;
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
@@ -52,27 +53,35 @@ nav a:hover {
 }
 
 /* =========================
-   HERO SECTION
+   HERO
 ========================= */
+
 .hero {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 80vh;
+  padding: 20px;
+  text-align: center;
 }
 
 .hero-box {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(20px);
-  padding: 40px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 0 50px rgba(0,0,0,0.8);
-  animation: fadeIn 1.2s ease-in-out;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+  max-width: 500px;
+  width: 100%;
 }
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
+
 .btn {
+  display: inline-block;
+  margin-top: 10px;
   background: linear-gradient(45deg, #00ffd5, #00ff88);
   padding: 12px 25px;
   border-radius: 25px;
@@ -83,60 +92,62 @@ nav a:hover {
 }
 
 .btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* =========================
-   FEATURES SECTION
+   FEATURES GRID
 ========================= */
+
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  padding: 30px;
+  gap: 20px;
+  padding: 20px;
   max-width: 1200px;
   margin: auto;
 }
 
-/* CARD */
 .card {
-  min-width: 260px;
-  max-width: 260px;
-
   background: rgba(255,255,255,0.08);
-  padding: 20px;
-  border-radius: 20px;
+  padding: 15px;
+  border-radius: 15px;
   text-align: center;
-  backdrop-filter: blur(15px);
-  transition: 0.4s;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  animation: fadeUp 0.8s ease;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 0 30px rgba(0,255,200,0.7);
+  transform: translateY(-8px);
 }
 
-/* PRODUCT IMAGE */
 .card img {
   width: 100%;
   height: 180px;
-  border-radius: 10px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
-/* TEXT INSIDE CARD */
-.card p b {
-  color: #00ffd5;
+/* =========================
+   PRODUCT / CART SCROLL
+========================= */
+
+#product-list,
+#cart-items,
+#order-list {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  overflow-x: auto;
 }
 
 /* =========================
    BUTTONS
 ========================= */
+
 button {
   padding: 8px 12px;
-  margin-top: 10px;
+  margin-top: 8px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -146,62 +157,38 @@ button {
 }
 
 button:hover {
-  transform: scale(1.08);
-}
-
-/* =========================
-   PRODUCT / CART / ORDERS SCROLL
-========================= */
-#product-list,
-#cart-items,
-#order-list {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  overflow-x: auto;
-}
-
-/* hide scrollbar */
-#product-list::-webkit-scrollbar,
-#cart-items::-webkit-scrollbar,
-#order-list::-webkit-scrollbar {
-  display: none;
+  transform: scale(1.05);
 }
 
 /* =========================
    CHECKOUT
 ========================= */
+
 .checkout {
-  margin: 20px;
-  padding: 20px;
+  margin: 15px;
+  padding: 15px;
   background: rgba(255,255,255,0.08);
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
 }
 
 .checkout input {
-  width: 90%;
-  padding: 12px;
-  margin: 10px auto;
+  width: 95%;
+  padding: 10px;
+  margin: 8px auto;
   display: block;
-  border-radius: 10px;
+  border-radius: 8px;
   border: none;
 }
 
 /* =========================
-   STATUS COLORS
-========================= */
-.status-pending { color: orange; }
-.status-shipped { color: yellow; }
-.status-delivered { color: limegreen; }
-
-/* =========================
    FLOATING BUTTONS
 ========================= */
+
 .call, .whatsapp, .location {
   position: fixed;
-  bottom: 20px;
-  padding: 14px;
+  bottom: 15px;
+  padding: 12px;
   border-radius: 50%;
   color: white;
   text-decoration: none;
@@ -209,29 +196,55 @@ button:hover {
   transition: 0.3s;
 }
 
-.call { left: 20px; background: blue; }
-.whatsapp { right: 20px; background: #25D366; }
-.location { right: 80px; background: red; }
+.call { left: 15px; background: blue; }
+.whatsapp { right: 15px; background: #25D366; }
+.location { right: 70px; background: red; }
 
 .call:hover, .whatsapp:hover, .location:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 /* =========================
    ANIMATIONS
 ========================= */
+
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 8px;
+  }
+
+  .hero-box {
+    padding: 20px;
+  }
+
+  .card {
+    min-width: 180px;
+  }
+
+  #product-list,
+  #cart-items,
+  #order-list {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .checkout input {
+    width: 100%;
+  }
 }
