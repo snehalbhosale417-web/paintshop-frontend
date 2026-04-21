@@ -1,16 +1,17 @@
 const API_URL = "https://paintshop-snehal.onrender.com/api/orders";
 
-const container = document.getElementById("order-list");
-
 async function loadOrders() {
+  const container = document.getElementById("order-list");
+  if (!container) return;
+
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
 
     container.innerHTML = "";
 
-    if (!data.length) {
-      container.innerHTML = "<h3>No orders</h3>";
+    if (!data || data.length === 0) {
+      container.innerHTML = "<h3>No orders 📦</h3>";
       return;
     }
 
@@ -34,7 +35,7 @@ async function loadOrders() {
     });
 
   } catch (err) {
-    console.log(err);
+    console.log("Order error:", err);
   }
 }
 
