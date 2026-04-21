@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <nav>
+    <h1>👨‍💻 Admin Panel</h1>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </nav>
+
+  <!-- ADD PRODUCT -->
+  <div style="text-align:center; margin-top:30px;">
+    <h2>Add Product</h2>
+
+    <input id="name" placeholder="Product Name"><br><br>
+    <input id="price" placeholder="Price"><br><br>
+    <input id="image" placeholder="Image URL (images/yourimage.jpg)"><br><br>
+
+    <button onclick="addProduct()">Add Product</button>
+  </div>
+
+  <!-- DELETE PRODUCT -->
+  <div style="text-align:center; margin-top:40px;">
+    <h2>Delete Product</h2>
+
+    <input id="deleteId" placeholder="Enter Product ID"><br><br>
+
+    <button onclick="deleteProduct()">Delete Product</button>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:3000/api/products";
+
+    // ➕ Add product
+    function addProduct() {
+      const name = document.getElementById("name").value;
+      const price = document.getElementById("price").value;
+      const image = document.getElementById("image").value;
+
+      fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          price: Number(price),
+          image
+        })
+      })
+      .then(res => res.json())
+      .then(() => {
+        alert("Product Added ✅");
+      });
+    }
+
+    // ❌ Delete product
+    function deleteProduct() {
+      const id = document.getElementById("deleteId").value;
+
+      fetch(API_URL + "/" + id, {
+        method: "DELETE"
+      })
+      .then(() => {
+        alert("Product Deleted ❌");
+      });
+    }
+  </script>
+
+</body>
+</html>

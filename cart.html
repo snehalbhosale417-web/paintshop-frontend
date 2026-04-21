@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- 🧭 NAVBAR -->
+<nav>
+  <h1>🛒 Your Cart</h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="orders.html">Orders 📦</a>
+  </div>
+</nav>
+
+<!-- 🛍 CART ITEMS -->
+<div id="cart-items"></div>
+
+<!-- 💳 CHECKOUT -->
+<div class="checkout">
+
+  <h2>📦 Delivery Details</h2>
+
+  <input type="text" id="name" placeholder="Enter your name">
+  <input type="text" id="phone" placeholder="Enter phone number">
+  <input type="text" id="address" placeholder="Enter full address">
+
+  <h2>💰 Payment Method</h2>
+
+  <label>
+    <input type="radio" name="payment" value="COD" checked>
+    Cash on Delivery
+  </label>
+
+  <br><br>
+
+  <button onclick="placeOrder()">Place Order 🧾</button>
+
+</div>
+
+<script src="js/cart.js"></script>
+
+</body>
+</html>

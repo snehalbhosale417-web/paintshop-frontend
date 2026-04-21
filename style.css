@@ -1,0 +1,229 @@
+/* 🌈 BODY */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url("../images/shop.jpeg") no-repeat center center/cover;
+  color: white;
+}
+
+/* 🌤 LIGHT OVERLAY (CLEAR IMAGE FIXED) */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0,0,0,0.25),   /* 🔥 lighter */
+    rgba(0,0,0,0.35)
+  );
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* 🧭 NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00ffd5;
+}
+
+/* 🎬 HERO */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.hero-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* ✨ BUTTON */
+.btn {
+  background: linear-gradient(45deg, #00ffd5, #00ff88);
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+/* 🌟 SECTION TITLE */
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  margin: 40px 0 10px;
+  color: #00ffd5;
+  animation: fadeUp 1s ease;
+}
+
+/* 🧱 FEATURES GRID */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+  border-radius: 20px;
+}
+
+/* 🧊 CARD (FIXED SIZE FOR PRODUCTS) */
+.card {
+  min-width: 260px;
+  max-width: 260px;
+  flex-shrink: 0;
+
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(15px);
+  transition: 0.4s;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  animation: fadeUp 0.8s ease;
+}
+
+/* ✨ HOVER */
+.card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 0 30px rgba(0,255,200,0.7);
+}
+
+/* 🖼 IMAGE */
+.card img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* 🔘 BUTTON */
+button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #00ff88, #00ffd5);
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+/* 🛍 PRODUCTS / CART / ORDERS */
+#product-list,
+#cart-items,
+#order-list {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* 🧾 CHECKOUT */
+.checkout {
+  margin: 20px;
+  padding: 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+}
+
+/* ✍ INPUT */
+.checkout input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px auto;
+  display: block;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 💰 PRICE */
+.card p b {
+  color: #00ffd5;
+}
+
+/* 📦 STATUS */
+.status-pending { color: orange; }
+.status-shipped { color: yellow; }
+.status-delivered { color: limegreen; }
+
+/* 📞 FLOAT BUTTONS */
+.call, .whatsapp, .location {
+  position: fixed;
+  bottom: 20px;
+  padding: 14px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.call { left: 20px; background: blue; }
+.whatsapp { right: 20px; background: #25D366; }
+.location { right: 80px; background: red; }
+
+.call:hover, .whatsapp:hover, .location:hover {
+  transform: scale(1.2);
+}
+
+/* 🎬 ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 🚫 SCROLLBAR */
+#product-list::-webkit-scrollbar,
+#cart-items::-webkit-scrollbar,
+#order-list::-webkit-scrollbar {
+  display: none;
+}
