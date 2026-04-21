@@ -2,7 +2,6 @@ const API_URL = "https://paintshop-snehal.onrender.com/api/products";
 
 let allProducts = [];
 
-// LOAD PRODUCTS
 async function loadProducts() {
   try {
     const res = await fetch(API_URL);
@@ -16,21 +15,17 @@ async function loadProducts() {
   }
 }
 
-// IMAGE FIX FUNCTION (BEST PRACTICE)
+// IMAGE FIX
 function getImagePath(image) {
   if (!image) return "./images/default.jpg";
-
   if (image.startsWith("http")) return image;
-
   if (image.startsWith("images/")) return "./" + image;
-
   return "./images/" + image;
 }
 
 // DISPLAY PRODUCTS
 function displayProducts(products) {
   const container = document.getElementById("product-list");
-
   if (!container) return;
 
   container.innerHTML = "";
@@ -41,16 +36,13 @@ function displayProducts(products) {
   }
 
   products.forEach(p => {
-
-    const imgSrc = getImagePath(p.image);
-
     const div = document.createElement("div");
     div.className = "card";
 
-    div.innerHTML = `
-      <img src="${imgSrc}" 
-        style="width:100%; border-radius:10px; height:180px; object-fit:cover;">
+    const imgSrc = getImagePath(p.image);
 
+    div.innerHTML = `
+      <img src="${imgSrc}">
       <h3>${p.name}</h3>
       <p><b>₹${p.price}</b></p>
 
@@ -72,7 +64,7 @@ if (searchInput) {
 
     const filtered = allProducts.filter(p =>
       p.name.toLowerCase().includes(value) ||
-      p.category?.toLowerCase().includes(value)
+      (p.category && p.category.toLowerCase().includes(value))
     );
 
     displayProducts(filtered);
@@ -90,5 +82,4 @@ function addToCart(name, price) {
   alert("Added to cart 🛒");
 }
 
-// INIT
 loadProducts();
